@@ -19,7 +19,6 @@ const candystore = () => {
 
     return (
         <Layout title='Dulceria | CinePlanet' content='candy store' >
-            <div>
 
                 <div className="max-w-7xl container mx-auto px-6 pt-9   ">
 
@@ -33,7 +32,6 @@ const candystore = () => {
                     </div>
 
                 </div>
-            </div>
         </Layout>
 
     )

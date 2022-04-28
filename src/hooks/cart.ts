@@ -1,82 +1,56 @@
-import axios from "axios";
 import { AppDispatch } from "../app/store";
 import { add_item_ok, get_item_ok } from "../features/cartSlice";
-import { films_ok } from "../features/filmSlice";
 import { getStoreLocal } from '../helpers/helpRedux';
 import { Icandy } from "../types/insterfaces/Candy";
 import { CartState, itemCart } from "../types/insterfaces/Cart";
 import { setAlert } from "./alert";
 
 export const add_item = (item: Icandy) => async (dispatch: AppDispatch) => {
-
-    let cart: itemCart[] = [];
-    let cartRes: CartState;
+    let cart: CartState;
+    let shouldAddItem = true;
+    let order_item: itemCart
+    let cartNew: itemCart[] = [];
     let amount = 0.0;
     let total_items = 0;
     let count = 1
-    let order_item: itemCart
 
-    if (getStoreLocal('cart')) {
-        cartRes = JSON.parse(getStoreLocal('cart') || '{}')
-        cart = []
-        cartRes.items?.map((cart_item: itemCart) => {
+    if (localStorage.getItem('cart')) {
+        cart = JSON.parse(localStorage.getItem('cart') || "{}");
+        cart.items?.map((cart_item: itemCart) => {
             if (cart_item.candy.price + cart_item.candy.description + cart_item.candy.name === item.price + item.description + item.name && cart_item.count) {
+                shouldAddItem = false;
                 cart_item.count += 1
-                cart.push(cart_item);
-                console.log("cart_item if", cart);
-
-            } else {
-                console.log("befor ", cart);
-                let searh = cart.find((element: itemCart) => {
-                    element === cart_item
-                })
-                if (!searh) {
-                    cart.push(cart_item);
-                    console.log("cart_item else", cart);
-
-                }
-
-                order_item = {
-                    candy: item,
-                    count: count,
-                };
-                cart.push(order_item);
-                console.log("order_item", cart);
-
             }
-
-
-
-            amount += parseFloat(cart_item.candy.price) * parseFloat(cart_item.count !== null ? cart_item.count.toString() : "0");
-            total_items += 1
         });
+        order_item = {
+            candy: item,
+            count: 1
+        };
 
+        if (shouldAddItem)
+            cart.items?.push(order_item)
 
-
-        dispatch(add_item_ok({
-            items: cart,
-            amount: parseFloat(amount.toFixed(2)),
-            total_items: total_items
-        }));
+        dispatch(add_item_ok(cart));
     } else {
         order_item = {
             candy: item,
             count: count,
         };
-
-        cart.push(order_item)
-        console.log("sinStore", order_item);
-        console.log("order sinStore", cart);
-
+        cartNew.push(order_item)
         dispatch(add_item_ok({
-            items: cart,
+            items: cartNew,
             amount: parseFloat(amount.toFixed(2)),
             total_items: total_items
         }));
     }
 
 
+
+
+
+
 }
+
 
 
 
