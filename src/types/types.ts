@@ -10,3 +10,15 @@ export interface NavbarIten {
     to:string;
     Icon: IconType;
 }
+export interface IFormCheckout {
+    name:string;
+    mail:string;
+    dni:string;
+    operation_date:string;
+
+    num_card:string
+    date:string
+    cvv:string
+
+}
+
