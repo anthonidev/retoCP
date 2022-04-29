@@ -27,8 +27,8 @@ const Home: NextPage = () => {
           <div className='grid lg:grid-cols-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8'>
 
             {
-              products?.map(product => (
-                <FilmCard product={product} />
+              products?.map((product, index) => (
+                <FilmCard product={product} key={index} />
               ))
             }
           </div>

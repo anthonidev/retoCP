@@ -5,7 +5,7 @@ import { RootState } from '../app/store'
 import useEffect from 'react';
 import Layout from '../components/layout/Layout';
 
-const thanks = () => {
+const Thanks = () => {
     const route = useRouter()
     const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated)
 
@@ -19,4 +19,4 @@ const thanks = () => {
     )
 }
 
-export default thanks
+export default Thanks

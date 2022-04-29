@@ -7,7 +7,7 @@ import OrderSumary from '../components/cart/OrderSumary'
 import Layout from '../components/layout/Layout'
 import { itemCart } from '../types/insterfaces/Cart'
 
-const checkout = () => {
+const Checkout = () => {
     const items = useSelector((state: RootState) => state.cart.items)
     const total_items = useSelector((state: RootState) => state.cart.total_items)
 
@@ -49,4 +49,4 @@ const checkout = () => {
     )
 }
 
-export default checkout
+export default Checkout

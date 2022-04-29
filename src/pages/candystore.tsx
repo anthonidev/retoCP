@@ -5,15 +5,15 @@ import CandyCard from '../components/card/CandyCard'
 import Layout from '../components/layout/Layout'
 import { get_candies } from '../hooks/candy'
 
-const candystore = () => {
+const Candystore = () => {
     const dispatch = useDispatch()
+    const candies = useSelector((state: RootState) => state.candy.candies);
+
     useEffect(() => {
         dispatch(get_candies())
     }, [dispatch])
 
-    const candies = useSelector((state: RootState) => state.candy.candies);
 
-    
 
 
 
@@ -37,4 +37,4 @@ const candystore = () => {
     )
 }
 
-export default candystore
+export default Candystore

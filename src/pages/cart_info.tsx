@@ -6,7 +6,7 @@ import OrderSumary from '../components/cart/OrderSumary'
 import Layout from '../components/layout/Layout'
 import { itemCart } from '../types/insterfaces/Cart'
 
-const cart_info = () => {
+const Cart_info = () => {
     const items = useSelector((state: RootState) => state.cart.items)
     const total_items = useSelector((state: RootState) => state.cart.total_items)
 
@@ -50,4 +50,4 @@ const cart_info = () => {
     )
 }
 
-export default cart_info
+export default Cart_info
