@@ -10,7 +10,7 @@ export const get_candies = () => async (dispatch: AppDispatch) => {
         }
     };
     try {
-        const res = await axios.get(`http://ec2-3-138-85-219.us-east-2.compute.amazonaws.com:8080/cp/v1/candystore`, config);
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_CP_RETO}/cp/v1/candystore`, config);
         if (res.status === 200) {
             dispatch(candies_ok(res.data.items));
         } else {

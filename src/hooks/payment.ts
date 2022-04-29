@@ -16,7 +16,7 @@ export const post_payment = (name: string, mail: string, dni: string, operation_
     });
 
     try {
-        const res = await axios.post(`http://ec2-3-138-85-219.us-east-2.compute.amazonaws.com:8080/cp/v1/complete`, body, config);
+        const res = await axios.post(`${process.env.NEXT_PUBLIC_CP_RETO}/cp/v1/complete`, body, config);
         console.log(res.status)
         if (res.status === 200) {
             dispatch(setAlert('La compra se ha realizado satisfactoriamente', 'red'));
