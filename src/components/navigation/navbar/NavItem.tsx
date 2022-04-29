@@ -12,15 +12,10 @@ const NavItem: FunctionComponent<{ iten: NavbarIten, type: string }> = ({ iten: 
     let hover, select, noSelect
     const { pathname } = useRouter()
 
-    if (type === "main") {
-        hover = 'hover:text-pri-100'
-        select = 'text-let '
-        noSelect=' '
-
-    }
+    
     if (type === "top") {
-        select = 'text-let  '
-        hover = 'hover:text-white'
+        select = 'text-white '
+        hover = 'hover:text-dev-100'
     }
 
 

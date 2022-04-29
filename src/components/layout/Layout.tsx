@@ -41,13 +41,13 @@ const Layout: React.FC<Props> = ({ title, content, children }) => {
         <title>{title}</title>
         <meta name='description' content={content} />
       </Head>
-      <motion.main variants={routeAnimation} initial="initial" animate="animate" exit="exit">
+      <main >
         <Navbar openUser={openUser} />
 
         <div className="bg-plo-100 min-h-screen">
           {children}
         </div>
-      </motion.main>
+      </main>
 
       {
         userOpen ? (<motion.div ><SidebarUser closeUser={closeUser} /></motion.div>) : (<></>)

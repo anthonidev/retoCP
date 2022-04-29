@@ -16,7 +16,7 @@ const navbar: FunctionComponent<{openUser: () => void }> = ({ openUser }) => {
           }
         </div>
         <div className='flex'>
-          <h1 className='text-rou text-2xl font-bold hidden lg:block tracking-widest'>CINEPLANNET</h1>
+          <h1 className='text-rou text-2xl font-bold hidden lg:block tracking-widest'>CINEPLANET</h1>
         </div>
         <div className='flex text-plo'>
           <NavBarItenIcom openUser={openUser}/>
