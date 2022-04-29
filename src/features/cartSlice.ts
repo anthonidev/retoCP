@@ -19,13 +19,19 @@ export const cartSlice = createSlice({
             state.amount = action.payload.amount
             state.total_items = action.payload.total_items
         },
+        remove: (state) => {
+            
+            state.items = null
+            state.amount =  null
+            state.total_items =  null
+        },
       
     }
 });
 
 
 export const {
-     get_item_ok
+     get_item_ok,remove
 } = cartSlice.actions
 
 

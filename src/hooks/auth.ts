@@ -74,7 +74,7 @@ export const login = (email: string, password: string) => async (dispatch: AppDi
         if (res.status === 200) {
 
             dispatch(login_ok(res.data));
-            dispatch(setAlert("WELCOME", "green"));
+            dispatch(setAlert(`Bienvenido`, "green"));
             try {
                 dispatch(load_user());
 

@@ -28,7 +28,7 @@ const Login = () => {
         dispatch(login(formData.email, formData.password));
     };
     if (typeof window !== 'undefined' && isAuthenticated)
-        router.push('/');
+        router.push('/candystore');
 
     return (
         <Layout title='Ingresar | ATON' content="Iniciar sesion en aton">

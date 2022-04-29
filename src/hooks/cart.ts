@@ -1,5 +1,5 @@
 import { AppDispatch } from "../app/store";
-import { get_item_ok } from "../features/cartSlice";
+import { get_item_ok, remove } from "../features/cartSlice";
 import { getStoreLocal } from '../helpers/helpRedux';
 import { Icandy } from "../types/insterfaces/Candy";
 import { CartState, itemCart } from "../types/insterfaces/Cart";
@@ -52,12 +52,11 @@ export const add_item = (item: Icandy) => async (dispatch: AppDispatch) => {
         cartNew.map(cartNewItem => {
             if (cartNewItem.count !== null) {
                 amount += parseFloat(cartNewItem.candy.price) * cartNewItem.count
-
             }
         })
         dispatch(get_item_ok({
             items: cartNew,
-            amount: parseFloat(amount.toFixed(2)),
+            amount: parseFloat(item.price),
             total_items: 1
         }));
     }
@@ -130,4 +129,11 @@ export const remove_item = (item: Icandy) => async (dispatch: AppDispatch) => {
         dispatch(get_item_ok(new_cart));
 
     }
+}
+
+export const clear = () => async (dispatch: AppDispatch) => {
+    localStorage.removeItem("cart")
+    dispatch(remove());
+    dispatch(setAlert(`El carrito esta vacio`, "green"));
+
 }

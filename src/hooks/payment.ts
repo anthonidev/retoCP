@@ -1,6 +1,7 @@
 import axios from "axios";
 import { AppDispatch } from "../app/store";
 import { setAlert } from "./alert";
+import { clear } from "./cart";
 
 export const post_payment = (name: string, mail: string, dni: string, operation_date: string) => async (dispatch: AppDispatch) => {
     const config = {
@@ -20,12 +21,15 @@ export const post_payment = (name: string, mail: string, dni: string, operation_
         console.log(res.status)
         if (res.status === 200) {
             dispatch(setAlert('La compra se ha realizado satisfactoriamente', 'red'));
+            dispatch(clear());
 
         } else {
             dispatch(setAlert('Error al realizar la compra', 'red'));
         }
     } catch (err) {
         dispatch(setAlert('Error con el servidor ', 'red'));
+        dispatch(clear());
+
 
     }
 
