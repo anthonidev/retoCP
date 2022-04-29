@@ -77,6 +77,11 @@ const Login = () => {
                         </div>
                         <div>
                             <Submit loading={loading} text='Ingresar' />
+
+                        </div>
+                        <div>
+                            <span>Para hacer pruebas puedes usar email: <span className='text-pri font-bold'> admin@gmail.com</span></span> pass: <span className='text-pri font-bold'> 123</span>
+
                         </div>
                     </form>
                 </div>
