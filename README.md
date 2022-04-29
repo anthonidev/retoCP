@@ -43,5 +43,4 @@ npm run start
 ###Vista previa
 
 ![](https://github.com/anthonidev/retoCP/blob/master/public/assets/images/candy.png?raw=true)
-![](https://github.com/anthonidev/retoCP/blob/master/public/assets/images/
-cart.png?raw=true)
+![](https://github.com/anthonidev/retoCP/blob/master/public/assets/images/cart.png?raw=true)
