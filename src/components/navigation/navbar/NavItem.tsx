@@ -27,7 +27,7 @@ const NavItem: FunctionComponent<{ iten: NavbarIten, type: string }> = ({ iten: 
     return (
         <>
 
-            <div className='md:block hidden'>
+            <div className=''>
                 <Link href={to}>
                     <a>
                         <div className={`flex justify-center mx-3 font-semibold  ${hover} ${pathname === to ? select : noSelect}     `}>

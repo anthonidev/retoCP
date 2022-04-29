@@ -21,7 +21,7 @@ const SidebarUser: FunctionComponent<{
     return (
 
         <motion.div animate={{ x: [150, 0], opacity: [0, 1], }} 
-            transition={{ duration: 0.4, type: 'spring', delay: 0.1 }} className={`bg-plo-300  -mx-9 w-2/12  right-0 top-12 z-40 fixed  h-1/3 rounded-md `} >
+            transition={{ duration: 0.4, type: 'spring', delay: 0.1 }} className={`bg-pri -mx-9 w-full md:w-6/12   lg:w-4/12  right-0 top-12 z-40 fixed  lg:h-1/3 h-full md:h-1/2  `} >
             <div className='  flex h-full'>
 
                 {isAuthenticated ? (
@@ -58,7 +58,7 @@ const SidebarUser: FunctionComponent<{
                         className="ml-1 flex items-center justify-center  focus:outline-none "
                         onClick={closeUser}
                     >
-                        <TiDelete className="h-10 w-10 text-plo hover:text-pri " aria-hidden="true" />
+                        <TiDelete className="h-10 w-10 text-plo hover:text-rou " aria-hidden="true" />
                     </button>
                 </div>
             </div>

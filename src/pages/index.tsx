@@ -1,12 +1,12 @@
 import type { NextPage } from 'next'
-import Image from 'next/image';
-import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../app/store';
 import Layout from '../components/layout/Layout'
 import FilmCard from '../components/card/FilmCard';
 import { productsHome } from '../hooks/film';
+import { fadeInUp, routeAnimation, stagger } from '../animate/animations';
+import { motion } from 'framer-motion';
 
 
 const Home: NextPage = () => {
@@ -20,21 +20,22 @@ const Home: NextPage = () => {
 
   return (
     <Layout title='Home' content='home content' >
-      <div>
 
-        <div className="max-w-7xl container mx-auto px-6 pt-9   ">
+      <motion.div variants={routeAnimation} initial="initial" animate="animate" exit="exit" className="max-w-7xl container mx-auto px-6 pt-9   ">
 
-          <div className='grid lg:grid-cols-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8'>
+        <motion.div variants={stagger} initial="initial" animate="animate" className='grid lg:grid-cols-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8'>
 
-            {
-              products?.map((product, index) => (
-                <FilmCard product={product} key={index} />
-              ))
-            }
-          </div>
+          {
+            products?.map((product, index) => (
+              <motion.div variants={fadeInUp} key={index}>
+                <FilmCard product={product} />
 
-        </div>
-      </div>
+              </motion.div>
+            ))
+          }
+        </motion.div>
+
+      </motion.div>
 
     </Layout>
   )

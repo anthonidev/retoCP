@@ -4,6 +4,8 @@ import { RootState } from '../app/store'
 import CandyCard from '../components/card/CandyCard'
 import Layout from '../components/layout/Layout'
 import { get_candies } from '../hooks/candy'
+import { motion } from 'framer-motion';
+import { fadeInUp, stagger } from '../animate/animations'
 
 const Candystore = () => {
     const dispatch = useDispatch()
@@ -20,18 +22,20 @@ const Candystore = () => {
     return (
         <Layout title='Dulceria | CinePlanet' content='candy store' >
 
-                <div className="max-w-7xl container mx-auto px-6 pt-9   ">
+            <motion.div variants={stagger} initial="initial" animate="animate" className="max-w-7xl container mx-auto px-6 pt-9   ">
 
-                    <div className='grid lg:grid-cols-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8'>
-                        {
-                            candies?.map((candy,index) => (
-                                <CandyCard candy={candy} key={index}/>
-                            ))
-                        }
-
-                    </div>
+                <div className='grid lg:grid-cols-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8'>
+                    {
+                        candies?.map((candy, index) => (
+                            <motion.div variants={fadeInUp} key={index}>
+                                <CandyCard candy={candy} />
+                            </motion.div>
+                        ))
+                    }
 
                 </div>
+
+            </motion.div>
         </Layout>
 
     )

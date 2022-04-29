@@ -7,9 +7,10 @@ import Alert from "../notifications/Alert";
 import Navbar from "../navigation/navbar/Navbar";
 
 import { motion } from 'framer-motion';
-import SidebarOpen from "../navigation/sidebar/sidebar";
 import SidebarUser from '../navigation/user/SidebarUser';
 import { get_items } from "../../hooks/cart";
+import Footer from "../navigation/footer/Footer";
+import { routeAnimation } from "../../animate/animations";
 
 const Layout: React.FC<Props> = ({ title, content, children }) => {
   const dispatch = useDispatch();
@@ -21,15 +22,7 @@ const Layout: React.FC<Props> = ({ title, content, children }) => {
     dispatch(get_items());
   }, [dispatch]);
 
-  const [sidebarOpen, setSidebarOpen] = useState(false)
   const [userOpen, setUserOpen] = useState(false)
-  function closeModal() {
-    setSidebarOpen(false)
-  }
-
-  function openModal() {
-    setSidebarOpen(true)
-  }
 
 
   function closeUser() {
@@ -48,20 +41,19 @@ const Layout: React.FC<Props> = ({ title, content, children }) => {
         <title>{title}</title>
         <meta name='description' content={content} />
       </Head>
-      <main>
-        <Navbar openModal={openModal} openUser={openUser} />
+      <motion.main variants={routeAnimation} initial="initial" animate="animate" exit="exit">
+        <Navbar openUser={openUser} />
 
-        <div className="bg-plo-100">
+        <div className="bg-plo-100 min-h-screen">
           {children}
         </div>
-      </main>
-      {
-        sidebarOpen ? (<motion.div ><SidebarOpen closeModal={closeModal} /></motion.div>) : (<></>)
-      }
+      </motion.main>
+
       {
         userOpen ? (<motion.div ><SidebarUser closeUser={closeUser} /></motion.div>) : (<></>)
       }
       <Alert />
+      <Footer />
 
     </>
   )

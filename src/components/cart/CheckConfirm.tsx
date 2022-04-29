@@ -5,6 +5,7 @@ import { IFormCheckout } from '../../types/types';
 import { setAlert } from '../../hooks/alert';
 import { post_payment } from '../../hooks/payment';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const CheckConfirm = () => {
     const amout = useSelector((state: RootState) => state.cart.amount)
@@ -72,8 +73,8 @@ const CheckConfirm = () => {
         >
             <form onSubmit={onSubmit} className='lg:fixed bg-gray-50 dark:bg-dark-500 mt-16 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5 w-96' >
 
-                <h2 id="summary-heading" className="text-lg font-medium text-gray-900 dark:text-day-100">
-                    Total
+                <h2 id="summary-heading" className="text-lg font-bold tracking-widest text-rou mx-2 my-2 dark:text-day-100">
+                    Cineplanet
                 </h2>
 
                 <div className="mt-8 space-y-6">
@@ -166,18 +167,33 @@ const CheckConfirm = () => {
                 <dl className="mt-6 space-y-4">
                     <div className="border-t border-gray-200 pt-4 flex items-center justify-between text-gray-900 dark:text-day-100 text-base font-medium">
                         <dt >Suma del carrito</dt>
-                        <dd >S/{amout !== null && amout.toFixed(2)}</dd>
+                        <dd className='font-semibold text-lg text-pri' >S/{amout !== null && amout.toFixed(2)}</dd>
                     </div>
                 </dl>
 
-                <div className="mt-6">
-                    <button type='submit'
-                        className="w-full bg-pri border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
-                    >
-                        Confirmar Compra
-                    </button>
+                <div className="flex justify-between items-center">
+                    <div className="mt-6">
+                        <Link href={"/cart_info"}
 
+                        >
+                            <a className="w-full bg-white border-2 py-2 px-4 border-pri rounded-md hover:text-white hover:bg-pri-100">
+                                Atras
+                            </a>
+
+                        </Link>
+
+                    </div>
+
+                    <div className="mt-6">
+                        <button type='submit'
+                            className="w-full bg-pri border border-transparent rounded-md shadow-sm py-2 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
+                        >
+                            Confirmar
+                        </button>
+
+                    </div>
                 </div>
+
             </form>
 
         </section>
