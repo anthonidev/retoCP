@@ -7,7 +7,6 @@ import { RootState } from '../../app/store'
 import { add_item } from '../../hooks/cart'
 import { setAlert } from '../../hooks/alert'
 import { itemCart } from '../../types/insterfaces/Cart'
-import Link from 'next/link';
 
 const CandyCard: FunctionComponent<{ candy: Icandy }> = ({ candy: {
   description,
@@ -18,27 +17,17 @@ const CandyCard: FunctionComponent<{ candy: Icandy }> = ({ candy: {
 }) => {
   const [loading, setLoading] = useState(false);
   const items = useSelector((state: RootState) => state.cart.items)
-  const candies = useSelector((state: RootState) => state.candy.candies);
-  const total_items = useSelector((state: RootState) => state.cart.total_items)
-  const amout = useSelector((state: RootState) => state.cart.amount)
 
-  let [isOpen, setIsOpen] = useState(false)
-  function closeModal() {
-    setIsOpen(false)
-  }
-  function openModal() {
-    setIsOpen(true)
-  }
+
   const dispatch = useDispatch()
 
 
   const addToCart = async () => {
 
     setLoading(true)
-    const productAdd = candies !== null && candies.find((element: Icandy) => element.name + element.description + element.price === name + description + price)
     const MoreThatOne = items !== null && items.find((element: itemCart) => element.candy.name + element.candy.description + element.candy.price === name + description + price);
 
-    MoreThatOne === undefined ? dispatch(setAlert('Producto Agredo', 'green')) : dispatch(setAlert('Producto actualizado', 'green'))
+    MoreThatOne === undefined ? dispatch(setAlert('Producto Agregado', 'green')) : dispatch(setAlert('Producto actualizado', 'green'))
 
     dispatch(add_item({ description, name, price }));
     setLoading(false)
@@ -57,6 +46,7 @@ const CandyCard: FunctionComponent<{ candy: Icandy }> = ({ candy: {
           height="200"
           width="200"
           alt={description}
+          priority
 
         />
       </div>

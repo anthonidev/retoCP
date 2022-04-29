@@ -1,7 +1,8 @@
 import React from 'react'
-import { Fragment } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../app/store';
+import { motion } from 'framer-motion';
+import { fadeInUp, stagger } from '../../animate/animations';
 
 const Alert = () => {
     const alert = useSelector((state: RootState) => state.alert);
@@ -10,8 +11,8 @@ const Alert = () => {
             switch (alert.type) {
                 case 'green':
                     return (
-                        <div className="fixed bottom-2 z-50 w-1/2 flex flex-row items-center bg-green-200 p-5 rounded border-b-2 border-green-300  ">
-                            <div className=" flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+                        <motion.div variants={stagger} initial="initial" animate="animate" className="fixed bottom-2 z-50 w-1/2 flex flex-row items-center bg-green-200 p-5 rounded border-b-2 border-green-300  ">
+                            <motion.div variants={fadeInUp} className=" flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
                                 <span className="text-green-500">
                                     <svg fill="currentColor"
                                         viewBox="0 0 20 20"
@@ -21,21 +22,21 @@ const Alert = () => {
                                             clipRule="evenodd"></path>
                                     </svg>
                                 </span>
-                            </div>
-                            <div className="alert-content ml-6">
+                            </motion.div>
+                            <motion.div variants={fadeInUp} className="alert-content ml-6">
                                 <div className="alert-title font-semibold text-lg text-green-800">
                                     Correcto
                                 </div>
                                 <div className="alert-description text-sm text-green-600">
                                     {alert.msg}
                                 </div>
-                            </div>
-                        </div>
+                            </motion.div>
+                        </motion.div>
                     )
                 case 'yellow':
                     return (
-                        <div className="fixed bottom-2 z-50 w-1/2 flex flex-row items-center bg-yellow-200 p-5 rounded border-b-2 border-yellow-300">
-                            <div className=" flex items-center bg-yellow-100 border-2 border-yellow-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+                        <motion.div variants={stagger} initial="initial" animate="animate" className="fixed bottom-2 z-50 w-1/2 flex flex-row items-center bg-yellow-200 p-5 rounded border-b-2 border-yellow-300">
+                            <motion.div variants={fadeInUp} className=" flex items-center bg-yellow-100 border-2 border-yellow-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
                                 <span className="text-yellow-500">
                                     <svg fill="currentColor"
                                         viewBox="0 0 20 20"
@@ -45,21 +46,21 @@ const Alert = () => {
                                             clipRule="evenodd"></path>
                                     </svg>
                                 </span>
-                            </div>
-                            <div className="alert-content ml-4">
+                            </motion.div>
+                            <motion.div variants={fadeInUp} className="alert-content ml-4">
                                 <div className="alert-title font-semibold text-lg text-yellow-800">
                                     Advertencia
                                 </div>
                                 <div className="alert-description text-sm text-yellow-600">
                                     {alert.msg}
                                 </div>
-                            </div>
-                        </div>
+                            </motion.div>
+                        </motion.div>
                     )
                 case 'red':
                     return (
-                        <div className="fixed bottom-2 z-50 w-1/2 flex flex-row items-center bg-red-200 p-5 rounded border-b-2 border-red-300">
-                            <div className=" flex items-center bg-red-100 border-2 border-red-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+                        <motion.div variants={stagger} initial="initial" animate="animate" className="fixed bottom-2 z-50 w-1/2 flex flex-row items-center bg-red-200 p-5 rounded border-b-2 border-red-300">
+                            <motion.div variants={fadeInUp} className=" flex items-center bg-red-100 border-2 border-red-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
                                 <span className="text-red-500">
                                     <svg fill="currentColor"
                                         viewBox="0 0 20 20"
@@ -69,23 +70,23 @@ const Alert = () => {
                                             clipRule="evenodd"></path>
                                     </svg>
                                 </span>
-                            </div>
-                            <div className="alert-content ml-4">
+                            </motion.div>
+                            <motion.div variants={fadeInUp} className="alert-content ml-4">
                                 <div className="alert-title font-semibold text-lg text-red-800">
                                     Error
                                 </div>
                                 <div className="alert-description text-sm text-red-600">
                                     {alert.msg}
                                 </div>
-                            </div>
-                        </div>
+                            </motion.div>
+                        </motion.div>
                     )
                 case 'blue':
                     return (
 
 
-                        <div className="fixed bottom-2 z-50 w-1/2 flex flex-row items-center bg-blue-200 p-5 rounded border-b-2 border-blue-300">
-                            <div className="flex items-center bg-blue-100 border-2 border-blue-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+                        <motion.div variants={stagger} initial="initial" animate="animate" className="fixed bottom-2 z-50 w-1/2 flex flex-row items-center bg-blue-200 p-5 rounded border-b-2 border-blue-300">
+                            <motion.div variants={fadeInUp} className="flex items-center bg-blue-100 border-2 border-blue-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
                                 <span className="text-blue-500">
                                     <svg fill="currentColor"
                                         viewBox="0 0 20 20"
@@ -95,16 +96,16 @@ const Alert = () => {
                                             clipRule="evenodd"></path>
                                     </svg>
                                 </span>
-                            </div>
-                            <div className="alert-content ml-4">
+                            </motion.div>
+                            <motion.div variants={fadeInUp} className="alert-content ml-4">
                                 <div className="alert-title font-semibold text-lg text-blue-800">
                                     Información
                                 </div>
                                 <div className="alert-description text-sm text-blue-600">
                                     {alert.msg}
                                 </div>
-                            </div>
-                        </div>
+                            </motion.div>
+                        </motion.div>
                     )
 
                 default:

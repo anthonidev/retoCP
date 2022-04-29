@@ -2,6 +2,8 @@ import Image from 'next/image'
 import React, { FunctionComponent } from 'react'
 import { Ifilm } from '../../types/insterfaces/Film'
 import Link from 'next/link'
+import { motion } from 'framer-motion';
+import { fadeInUp } from '../../animate/animations';
 
 const FilmCard: FunctionComponent<{ product: Ifilm }> = ({ product: {
   description,
@@ -24,6 +26,8 @@ const FilmCard: FunctionComponent<{ product: Ifilm }> = ({ product: {
             height="200"
             width="200"
             alt={description}
+            priority
+
           />
           </a>
         </Link>
@@ -31,7 +35,7 @@ const FilmCard: FunctionComponent<{ product: Ifilm }> = ({ product: {
       </div>
       <div className='flex'>
         <div className='font-bold ml-4 w-4/5 '>
-          <h1 className='text-pri '>{description}</h1>
+          <motion.h1 className='text-pri' variants={fadeInUp}>{description}</motion.h1>
 
 
 

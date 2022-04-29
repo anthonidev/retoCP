@@ -47,7 +47,7 @@ const CartItem: FunctionComponent<{
 
         const removeItemHandler = () => {
             dispatch(remove_item(candy));
-            dispatch(setAlert('Producto Eliminado', 'red'));
+            dispatch(setAlert('Producto Eliminado', 'yellow'));
         };
 
         return (
@@ -60,6 +60,8 @@ const CartItem: FunctionComponent<{
                         layout="intrinsic"
                         height="150"
                         width="150"
+                        priority
+
                     />
 
                 </div>
