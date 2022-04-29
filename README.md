@@ -1,26 +1,46 @@
-# Ecommerce ATON 
-_ Next js, Typescript,Redux-toolkit, Tailwind, JWT  _
+# Reto Cineplanet
+
+
+#### Tecnologías y principales librerias usadas 
+
+- Typescript
+- Next js
+- Redux-toolkit
+- Tailwind
+- Authentication JWT con Python de backend
+- Framer Motion
+- Axios
 
 ## Instalación 🔧
 
-_step 1_
+_paso 1_
 
 ```
-git clone https://github.com/anthonidev/Aton-Next.git
+git clone https://github.com/anthonidev/retoCP.git
 ```
 
-_step 2_
+_paso 2_
 
 ```
-cd Aton-Next
+cd retoCP
 ```
-_Instalamos las dependencias_
+_paso 2_
 
 ```
 npm i
 ```
-_Corremos el servidor_
+_paso 3_
 
 ```
-npm run dev
+npm run build
 ```
+_paso 4_
+
+```
+npm run start
+```
+
+###Vista previa
+
+![](https://github.com/anthonidev/retoCP/blob/master/public/assets/images/candy.png?raw=true)
+![](https://github.com/anthonidev/retoCP/blob/master/public/assets/images/cart.png?raw=true)
