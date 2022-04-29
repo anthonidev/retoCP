@@ -25,7 +25,7 @@ export const post_payment = (name: string, mail: string, dni: string, operation_
             dispatch(setAlert('Error al realizar la compra', 'red'));
         }
     } catch (err) {
-        dispatch(setAlert('Error con el servidor', 'red'));
+        dispatch(setAlert('Error con el servidor ', 'red'));
 
     }
 

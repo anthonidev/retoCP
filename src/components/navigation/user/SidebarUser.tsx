@@ -20,7 +20,7 @@ const SidebarUser: FunctionComponent<{
     }
     return (
 
-        <motion.div animate={{ x: [150, 0], opacity: [0, 1], }} 
+        <motion.div animate={{ x: [150, 0], opacity: [0, 1], }}
             transition={{ duration: 0.4, type: 'spring', delay: 0.1 }} className={`bg-pri -mx-9 w-full md:w-6/12   lg:w-4/12  right-0 top-12 z-40 fixed  lg:h-1/3 h-full md:h-1/2  `} >
             <div className='  flex h-full'>
 
@@ -38,12 +38,12 @@ const SidebarUser: FunctionComponent<{
                 ) : (
                     <div className="  flex-1 flex flex-col items-center   mt-5 justify-center space-y-4 ">
                         <Link href="/auth/login">
-                            <a className="font-bold text-lg border-2 border-pri text-pri hover:text-indigo-500 p-3 rounded-md">
+                            <a className="font-bold text-white text-lg border-2 border-white  hover:text-indigo-500 p-3 rounded-md">
                                 Ingresar
                             </a>
                         </Link>
                         <Link href="/auth/signup">
-                            <a className="font-bold text-lg border-2 border-pri text-pri hover:text-indigo-500 p-3 rounded-md">
+                            <a className="font-bold text-white text-lg border-2 border-white  hover:text-indigo-500 p-3 rounded-md">
                                 Registrarce
                             </a>
                         </Link>
