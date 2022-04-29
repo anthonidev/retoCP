@@ -25,7 +25,6 @@ const CheckConfirm = () => {
         setFormData({ ...formData, [e.currentTarget.name]: e.currentTarget.value });
         const item = e.currentTarget.classList
         const esValido = e.currentTarget.validity.valid
-        console.log(esValido);
 
         if (esValido) {
             item.replace("border-gray-300", "border-green-300")
@@ -55,7 +54,6 @@ const CheckConfirm = () => {
 
 
         } else {
-            console.log("good");
             formData.operation_date = "123456789"
             dispatch(post_payment(formData.name, formData.mail, formData.dni, formData.operation_date))
             setRender(true)

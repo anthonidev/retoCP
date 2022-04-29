@@ -10,12 +10,9 @@ export const add_item = (item: Icandy) => async (dispatch: AppDispatch) => {
     let shouldAddItem = true;
     let order_item: itemCart
     let cartNew: itemCart[] = [];
-    let amount = 0.0;
     let count = 1
-    console.log("antes");
 
     if (localStorage.getItem('cart')) {
-        console.log("if");
 
         cart = JSON.parse(localStorage.getItem('cart') || "{}");
         cart.items?.map((cart_item: itemCart) => {
@@ -42,18 +39,13 @@ export const add_item = (item: Icandy) => async (dispatch: AppDispatch) => {
         })
         dispatch(get_item_ok(cart));
     } else {
-        console.log("else");
 
         order_item = {
             candy: item,
             count: count,
         };
         cartNew.push(order_item)
-        cartNew.map(cartNewItem => {
-            if (cartNewItem.count !== null) {
-                amount += parseFloat(cartNewItem.candy.price) * cartNewItem.count
-            }
-        })
+
         dispatch(get_item_ok({
             items: cartNew,
             amount: parseFloat(item.price),
