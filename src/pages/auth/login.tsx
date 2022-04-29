@@ -18,8 +18,8 @@ const Login = () => {
     const loading = useSelector((state: RootState) => state.auth.loading);
 
     const [formData, setFormData] = useState<IFormLogin>({
-        email: 'admin@gmail.com',
-        password: '123',
+        email: '',
+        password: '',
     });
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -45,7 +45,7 @@ const Login = () => {
                         </p>
                     </div>
                     <form onSubmit={onSubmit} className="mt-8 space-y-6">
-                        <div className="rounded-md shadow-sm -space-y-px">
+                        <div className="rounded-md shadow-sm space-y-3">
                             <InputForm
                                 name={'email'}
                                 type='text'
@@ -73,13 +73,7 @@ const Login = () => {
                                     Remember me
                                 </label>
                             </div>
-                            <div className="text-sm">
-                                <Link href="/auth/reset">
-                                    <a className="font-medium text-pri hover:text-indigo-500">
-                                        Olvidaste tu contraseña?
-                                    </a>
-                                </Link>
-                            </div>
+
                         </div>
                         <div>
                             <Submit loading={loading} text='Ingresar' />

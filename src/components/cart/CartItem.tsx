@@ -7,6 +7,7 @@ import { setAlert } from '../../hooks/alert';
 import { itemCart } from '../../types/insterfaces/Cart';
 import { GrUpdate } from "react-icons/gr";
 import { RiDeleteBin2Fill } from "react-icons/ri";
+import { remove_item, update_item } from '../../hooks/cart';
 
 
 const CartItem: FunctionComponent<{
@@ -24,6 +25,7 @@ const CartItem: FunctionComponent<{
             item_count: 1
         });
 
+
         const { item_count } = formData;
 
         useEffect(() => {
@@ -37,14 +39,14 @@ const CartItem: FunctionComponent<{
             e.preventDefault();
 
             if (dispatch && dispatch !== null && dispatch !== undefined) {
-                // dispatch(update_item(product, item_count));
+                dispatch(update_item(candy, item_count));
                 dispatch(setAlert('Carrito actualizado', 'green'));
             }
 
         };
 
         const removeItemHandler = () => {
-                // dispatch(remove_item(product));
+            dispatch(remove_item(candy));
             dispatch(setAlert('Producto Eliminado', 'red'));
         };
 
@@ -67,10 +69,10 @@ const CartItem: FunctionComponent<{
                         <div>
                             <div className="flex justify-between">
                                 <h3 className="text-sm">
-                                        <span className="font-medium text-gray-700 hover:text-gray-800 dark:text-gray-100">{candy.description}</span>
+                                    <span className="font-medium text-gray-700 hover:text-gray-800 dark:text-gray-100">{candy.description}</span>
                                 </h3>
                             </div>
-                          
+
                             {
                                 pathname !== '/checkout' ? (<form onSubmit={e => onSubmit(e)}>
                                     <div className='flex justify-start items-center space-x-3 my-3'>
@@ -127,7 +129,7 @@ const CartItem: FunctionComponent<{
 
                     </div>
 
-                   
+
                 </div>
             </li>
         )

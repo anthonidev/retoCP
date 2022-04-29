@@ -130,7 +130,7 @@ export const refresh = () => async (dispatch: AppDispatch) => {
     }
 }
 
-export const signup = (first_name: string, last_name: string, email: string, password: string, re_password: string) => async (dispatch: AppDispatch) => {
+export const signup = (first_name: string, last_name: string, dni: string, email: string, password: string, re_password: string) => async (dispatch: AppDispatch) => {
     dispatch(on_loading());
     const config = {
         headers: {
@@ -140,6 +140,7 @@ export const signup = (first_name: string, last_name: string, email: string, pas
     const body = JSON.stringify({
         first_name,
         last_name,
+        dni,
         email,
         password,
         re_password
@@ -150,7 +151,7 @@ export const signup = (first_name: string, last_name: string, email: string, pas
         const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/users/`, body, config);
 
         if (res.status === 201) {
-            dispatch(setAlert("Te enviamos un correo, por favor activa tu cuenta. Revisa el correo de spam", "green"))
+            dispatch(setAlert("Cuenta creada satisfactoriamente", "green"))
         } else {
             dispatch(setAlert('Error al crear cuenta', 'red'));
         }
@@ -163,37 +164,7 @@ export const signup = (first_name: string, last_name: string, email: string, pas
 
 
 }
-export const activate = (uid: (string | string[] | undefined), token: (string | string[] | undefined)) => async (dispatch: AppDispatch) => {
-    dispatch(on_loading());
-    const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
-    const body = JSON.stringify({
-        uid,
-        token
-    });
 
-    try {
-        const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/users/activation/`, body, config);
-
-        if (res.status === 204) {
-            dispatch(setAlert("Cuenta activada!", "green"))
-
-        } else {
-            dispatch(setAlert("Error al activar la cuenta", "red"))
-        }
-
-        dispatch(off_loading());
-
-    } catch (err) {
-        dispatch(setAlert("Error al conectar al servidor", "red"))
-
-        dispatch(off_loading());
-
-    }
-}
 
 export const logout = () => (dispatch: AppDispatch) => {
     dispatch(fail_clear());
@@ -202,55 +173,3 @@ export const logout = () => (dispatch: AppDispatch) => {
 
 }
 
-export const reset_password = (email: string) => async (dispatch: AppDispatch) => {
-    dispatch(on_loading());
-    const body = JSON.stringify({ email });
-    const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
-
-    try {
-        const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/users/reset_password/`, body, config);
-        if (res.status === 204) {
-            dispatch(setAlert("Te enviamos un correo, revisa tu bandeja", "green"))
-        } else {
-            dispatch(setAlert("El correo no esta registrado", "red"))
-        }
-        dispatch(off_loading());
-    } catch (err) {
-        dispatch(setAlert("Error en el servidor, intente mas tarde", "red"))
-        dispatch(off_loading());
-
-    }
-}
-
-export const reset_password_confirm = (uid: (string | string[] | undefined), token: (string | string[] | undefined),new_password:string,re_new_password:string) => async (dispatch: AppDispatch) => {
-    dispatch(on_loading());
-    const body = JSON.stringify({
-        uid,
-        token,
-        new_password,
-        re_new_password
-    });
-    const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
-    if (new_password ===re_new_password){
-        const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/users/reset_password_confirm/`,body,config)
-
-        if (res.status===204){
-            dispatch(setAlert("Tu clave ha sido cambiada con exito", "green"))
-        }else{
-            dispatch(setAlert("Error en el servidor", "red"))
-        }
-        dispatch(off_loading());
-
-    }else{
-        dispatch(setAlert("Las contraseñas no coinciden", "red"))
-        dispatch(off_loading());
-    }
-}
