@@ -15,10 +15,10 @@ export const get_candies = () => async (dispatch: AppDispatch) => {
         if (res.status === 200) {
             dispatch(candies_ok(res.data.items));
         } else {
-            dispatch(setAlert('Error con el servidor', 'red'));
+            console.log('Error con el servidor');
         }
     } catch (err) {
-        dispatch(setAlert('Error con el servidor', 'red'));
+        console.log('Error con el servidor');
         // carga de manera manual para el funcionamiento en deploy 
         // los navegadores bloquean http, solo permiten https
         dispatch(candies_ok(DataCandy));

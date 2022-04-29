@@ -24,10 +24,10 @@ export const post_payment = (name: string, mail: string, dni: string, operation_
             dispatch(clear());
 
         } else {
-            dispatch(setAlert('Error al realizar la compra', 'red'));
+            console.log('Error con el servidor');
         }
     } catch (err) {
-        dispatch(setAlert('Error con el servidor ', 'red'));
+        console.log('Error con el servidor');
         dispatch(clear());
 
 

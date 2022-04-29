@@ -15,10 +15,11 @@ export const productsHome = () => async (dispatch: AppDispatch) => {
         if (res.status === 200) {
             dispatch(films_ok(res.data.premieres));
         } else {
-            dispatch(setAlert('Error con el servidor', 'red'));
+            console.log('Error con el servidor');
+            
         }
     } catch (err) {
-        dispatch(setAlert('Error con el servidor', 'red'));
+        console.log('Error con el servidor');
         // carga de manera manual para el funcionamiento en deploy 
         // los navegadores bloquean http, solo permiten https
         dispatch(films_ok(DataFilm));
