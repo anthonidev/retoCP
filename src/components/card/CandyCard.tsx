@@ -35,7 +35,6 @@ const CandyCard: FunctionComponent<{ candy: Icandy }> = ({ candy: {
 
   }
 
-
   return (
     <div className='bg-white  rounded-sm p-1 '>
 

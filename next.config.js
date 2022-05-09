@@ -11,6 +11,7 @@ const nextConfig = {
       'encrypted-tbn0.gstatic.com',
       'mx.toluna.com',
       'endocrinoynutricion.files.wordpress.com',
+      'm.media-amazon.com'
     ],
 
   },
